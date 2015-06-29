@@ -81,6 +81,7 @@ when "rhel"
 end
 
 template "/etc/td-agent/td-agent.conf" do
+  helpers(TdAgent::Version)
   mode "0644"
   source "td-agent.conf.erb"
   notifies :restart, "service[td-agent]"
